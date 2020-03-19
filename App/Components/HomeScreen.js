@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet,FlatList,TouchableHighlight} from 'react-native';
+import {View, Text, StyleSheet,FlatList,TouchableOpacity} from 'react-native';
 
 
 const style = StyleSheet.create({
@@ -26,13 +26,13 @@ const style = StyleSheet.create({
 
 const list = (item) => {
   return (
-    <TouchableHighlight>
+    <TouchableOpacity underlayColor={'white'}>
       <View style={style.container}>
         <View style={style.countryContainer}>
           <View style={style.countryBrand} />
           <Text style={style.countryName}> {item.name} </Text>
         </View>
-      </View></TouchableHighlight>
+      </View></TouchableOpacity>
   );
 };
 class HomeScreen extends Component {
