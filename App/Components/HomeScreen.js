@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet,FlatList,TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
+import CountryProviders from '../Providers/CountryProviders';
 
 
 const style = StyleSheet.create({
@@ -7,7 +8,12 @@ const style = StyleSheet.create({
     flex: 1,
     backgroundColor: '#5A6978',
   },
-  countryContainer: {flex: 0.15, marginStart:20,marginEnd:20, backgroundColor: '#5A6978'},
+  countryContainer: {
+    flex: 0.15,
+    marginStart: 20,
+    marginEnd: 20,
+    backgroundColor: '#5A6978',
+  },
   countryBrand: {
     width: 72,
     height: 55,
@@ -24,7 +30,7 @@ const style = StyleSheet.create({
   },
 });
 
-const list = (item) => {
+const list = item => {
   return (
     <TouchableOpacity underlayColor={'white'}>
       <View style={style.container}>
@@ -32,13 +38,20 @@ const list = (item) => {
           <View style={style.countryBrand} />
           <Text style={style.countryName}> {item.name} </Text>
         </View>
-      </View></TouchableOpacity>
+      </View>
+    </TouchableOpacity>
   );
 };
 class HomeScreen extends Component {
-  render() {
-    return (
 
+componentDidMount(): void {
+    CountryProviders.getCountries().then(countries => {
+        console.log(countries[0].country)
+    })
+}
+
+    render() {
+    return (
       <FlatList
         style={style.container}
         data={[
@@ -51,10 +64,9 @@ class HomeScreen extends Component {
           {name: 'Brasil'},
           {name: 'Brasil'},
         ]}
-
         renderItem={({item}) => list(item)}
       />
-    )
+    );
   }
 }
 
