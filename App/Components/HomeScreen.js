@@ -1,13 +1,17 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet,FlatList,TouchableOpacity} from 'react-native';
-
+import {View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
 
 const style = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#5A6978',
   },
-  countryContainer: {flex: 0.15, marginStart:20,marginEnd:20, backgroundColor: '#5A6978'},
+  countryContainer: {
+    flex: 0.15,
+    marginStart: 20,
+    marginEnd: 20,
+    backgroundColor: '#5A6978',
+  },
   countryBrand: {
     width: 72,
     height: 55,
@@ -24,7 +28,7 @@ const style = StyleSheet.create({
   },
 });
 
-const list = (item) => {
+const countryItemRenderFlatList = item => {
   return (
     <TouchableOpacity underlayColor={'white'}>
       <View style={style.container}>
@@ -32,29 +36,29 @@ const list = (item) => {
           <View style={style.countryBrand} />
           <Text style={style.countryName}> {item.name} </Text>
         </View>
-      </View></TouchableOpacity>
+      </View>
+    </TouchableOpacity>
   );
 };
 class HomeScreen extends Component {
   render() {
     return (
-
       <FlatList
         style={style.container}
         data={[
-          {name: 'Brasil'},
-          {name: 'Brasil'},
-          {name: 'Brasil'},
-          {name: 'Brasil'},
-          {name: 'Brasil'},
-          {name: 'Brasil'},
-          {name: 'Brasil'},
-          {name: 'Brasil'},
+          {id: 'Brasil1', name: 'Brasil', flagUrl: 'abc'},
+          {id: 'Brasil2', name: 'Brasil', flagUrl: 'abc'},
+          {id: 'Brasil3', name: 'Brasil', flagUrl: 'abc'},
+          {id: 'Brasil4', name: 'Brasil', flagUrl: 'abc'},
+          {id: 'Brasil5', name: 'Brasil', flagUrl: 'abc'},
+          {id: 'Brasil6', name: 'Brasil', flagUrl: 'abc'},
+          {id: 'Brasil7', name: 'Brasil', flagUrl: 'abc'},
+          {id: 'Brasil8', name: 'Brasil', flagUrl: 'abc'},
         ]}
-
-        renderItem={({item}) => list(item)}
+        renderItem={({item}) => countryItemRenderFlatList(item)}
+        keyExtractor={item => item.id}
       />
-    )
+    );
   }
 }
 
