@@ -6,7 +6,7 @@ export default class CountryProviders {
     let countryObj = {id:country.name,country:country.name,flagUrl:flagUrl};
     return countryObj;
   };
-  static async getCountries() {
+  static async getCountriesList() {
     let i;
     let countryList = [];
     let countries = await CountryService.getCountries();
@@ -15,6 +15,6 @@ export default class CountryProviders {
       let countryObj = await this.parseFlagUrlToObjectList(countries[i]);
       countryList.push(countryObj);
     }
-    console.log(countryList)
+    return countryList
   }
 }
