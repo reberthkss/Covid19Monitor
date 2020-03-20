@@ -37,7 +37,7 @@ const style = StyleSheet.create({
   },
 });
 
-const list = item => {
+const countryItemRenderFlatList  = item => {
   return (
     <TouchableOpacity underlayColor={'white'}>
       <View style={style.container}>
@@ -72,7 +72,8 @@ class HomeScreen extends Component {
       <FlatList
         style={style.container}
         data={this.state.countries}
-        renderItem={({item}) => list(item)}
+        renderItem={({item}) => countryItemRenderFlatList (item)}
+        keyExtractor={item => item.id}
       />
     );
   }
