@@ -1,7 +1,14 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  TouchableOpacity,
+  ActivityIndicator,
+  Image,
+} from 'react-native';
 import CountryProviders from '../Providers/CountryProviders';
-
 
 const style = StyleSheet.create({
   container: {
@@ -35,8 +42,8 @@ const list = item => {
     <TouchableOpacity underlayColor={'white'}>
       <View style={style.container}>
         <View style={style.countryContainer}>
-          <View style={style.countryBrand} />
-          <Text style={style.countryName}> {item.name} </Text>
+          <View style={style.countryBrand}><Image style={{flex:1}} source={{uri:item.flagUrl}}/></View>
+          <Text style={style.countryName}> {item.country} </Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -54,19 +61,17 @@ class HomeScreen extends Component {
     });
   }
   render() {
+    if (this.state.loading) {
+      return (
+        <View style={{flex: 1}}>
+          <ActivityIndicator />
+        </View>
+      );
+    }
     return (
       <FlatList
         style={style.container}
-        data={[
-          {name: 'Brasil'},
-          {name: 'Brasil'},
-          {name: 'Brasil'},
-          {name: 'Brasil'},
-          {name: 'Brasil'},
-          {name: 'Brasil'},
-          {name: 'Brasil'},
-          {name: 'Brasil'},
-        ]}
+        data={this.state.countries}
         renderItem={({item}) => list(item)}
       />
     );
