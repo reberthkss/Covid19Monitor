@@ -6,6 +6,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from './Components/HomeScreen'
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+
 const Stack = createStackNavigator();
 
 const searchIcon = <TouchableOpacity>
