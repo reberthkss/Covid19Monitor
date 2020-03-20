@@ -43,14 +43,14 @@ const list = item => {
   );
 };
 class HomeScreen extends Component {
-
-componentDidMount(): void {
-    CountryProviders.getCountries().then(countries => {
-        console.log(countries[0].country)
-    })
-}
-
-    render() {
+  state = {
+    loading: true,
+    countries: [],
+  };
+  componentDidMount(): void {
+    CountryProviders.getCountries();
+  }
+  render() {
     return (
       <FlatList
         style={style.container}
