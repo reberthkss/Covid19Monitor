@@ -22,15 +22,15 @@ const style = StyleSheet.create({
     backgroundColor: '#5A6978',
   },
   countryBrand: {
-    width: 72,
-    height: 55,
+    width: 75,
+    height: 70,
     marginTop: 15,
     marginStart: 20,
-    backgroundColor: '#13CE66',
+    backgroundColor: 'rgba(0,0,0,0)',
   },
   countryName: {
     position: 'absolute',
-    marginTop: 25,
+    marginTop: 35,
     marginLeft: 130,
     fontSize: 20,
     color: 'white',
@@ -42,7 +42,7 @@ const countryItemRenderFlatList  = item => {
     <TouchableOpacity underlayColor={'white'}>
       <View style={style.container}>
         <View style={style.countryContainer}>
-          <View style={style.countryBrand}><Image style={{flex:1}} source={{uri:item.flagUrl}}/></View>
+          <View style={style.countryBrand}><Image style={{flex:1, resizeMode:'contain'}} source={{uri:item.flagUrl}}/></View>
           <Text style={style.countryName}> {item.country} </Text>
         </View>
       </View>
