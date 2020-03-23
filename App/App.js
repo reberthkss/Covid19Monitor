@@ -1,21 +1,23 @@
 import 'react-native-gesture-handler';
 import React, {Component} from 'react';
-import {View, Text,TouchableHighlight,TouchableOpacity} from 'react-native';
+import {View, Text, TouchableHighlight, TouchableOpacity} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import HomeScreen from './Components/HomeScreen'
+import HomeScreen from './Components/HomeScreen';
+import ListOfStatesScreen from './Components/ListOfStatesScreen';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
 
 const Stack = createStackNavigator();
 
-const searchIcon = (<TouchableOpacity>
+const searchIcon = (
+  <TouchableOpacity>
     <View style={{padding: 10, margin: 10}}>
       <Icon name={'search'} style={{color: 'white'}} size={15} />
     </View>
-</TouchableOpacity>);
+  </TouchableOpacity>
+);
 
-const headerOptionsStkScreen = {
+const headerOptionsHomeScreen = {
   headerStyle: {backgroundColor: 'rgba(123,137,151,100)'},
   title: 'Covid-19 Monitor',
   headerTintColor: 'white',
@@ -23,7 +25,13 @@ const headerOptionsStkScreen = {
   headerTitleStyle: {fontFamily: 'Domine'},
   headerRight: () => searchIcon,
 };
-
+const headerOptionsStatesScreen = {
+  headerStyle: {backgroundColor: 'rgba(123,137,151,100)'},
+  title: 'States',
+  headerTintColor: 'white',
+  headerTitleStyle: {fontFamily: 'Arial'},
+  headerRight: () => searchIcon,
+};
 
 export default class App extends Component {
   render() {
@@ -33,8 +41,12 @@ export default class App extends Component {
           <Stack.Screen
             name={'Home'}
             component={HomeScreen}
-            options={headerOptionsStkScreen }
-
+            options={headerOptionsHomeScreen}
+          />
+          <Stack.Screen
+            name={'States'}
+            component={ListOfStatesScreen}
+            options={headerOptionsStatesScreen}
           />
         </Stack.Navigator>
       </NavigationContainer>
