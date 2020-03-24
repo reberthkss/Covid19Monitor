@@ -8,9 +8,9 @@ import {
 } from 'react-native';
 import StateProvider from '../Providers/StateProvider';
 
-const statesRender = state => {
+const statesRender = (state,navigation) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => navigation.navigate('DetailState')}>
       <View>
         <View
           style={{
@@ -58,7 +58,7 @@ export default class ListOfStatesScreen extends Component {
         <FlatList
           style={{flex: 1}}
           data={this.state.states}
-          renderItem={({item}) => statesRender(item)}
+          renderItem={({item}) => statesRender(item, this.props.navigation)}
           keyExtractor={item => item.id}
         />
       </View>

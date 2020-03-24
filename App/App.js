@@ -38,8 +38,7 @@ const headerOptionsDetailScreen = {
   headerStyle: {backgroundColor: 'rgba(123,137,151,100)'},
   title: 'Detail about state',
   headerTintColor: 'white',
-  headerTitleAlign: 'center',
-  headerTitleStyle: {fontFamily: 'Domine'},
+  headerTitleStyle: {fontFamily: 'Arial'},
   headerRight: () => searchIcon,
 };
 
