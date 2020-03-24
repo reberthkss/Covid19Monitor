@@ -7,10 +7,14 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import StateProvider from '../Providers/StateProvider';
-
-const statesRender = (state,navigation) => {
+import colors from '../styles/colors';
+import geralStyles from '../styles/general';
+const statesRender = (state, navigation) => {
   return (
-    <TouchableOpacity onPress={() => navigation.navigate('DetailState')}>
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate('DetailState', {selectedState: state})
+      }>
       <View>
         <View
           style={{
@@ -19,10 +23,11 @@ const statesRender = (state,navigation) => {
             marginTop: 20,
             marginBottom: 10,
           }}>
-          <Text style={{fontFamily: 'Arial', color: 'black', fontSize: 18}}>
+          <Text
+            style={{fontFamily: 'Arial', color: colors.itemList, fontSize: 18}}>
             {state.StateName}
           </Text>
-          <Text style={{fontFamily: 'Arial', color: '#5E92C0'}}>
+          <Text style={{fontFamily: 'Arial', color: colors.primary}}>
             {state.Confirmed} cases
           </Text>
         </View>
@@ -48,7 +53,7 @@ export default class ListOfStatesScreen extends Component {
   render() {
     if (this.state.loading) {
       return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={geralStyles.loading}>
           <ActivityIndicator />
         </View>
       );
