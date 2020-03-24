@@ -9,25 +9,26 @@ import {
   Image,
 } from 'react-native';
 import CountryProviders from '../Providers/CountryProviders';
-import ListOfStatesScreen from './ListOfStatesScreen';
+import colors from '../styles/colors';
+import geralStyles from '../styles/general';
 
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#5A6978',
+    backgroundColor: colors.secondary,
   },
   countryContainer: {
     flex: 0.15,
     marginStart: 20,
     marginEnd: 20,
-    backgroundColor: '#5A6978',
+    backgroundColor: colors.secondary,
   },
   countryBrand: {
     width: 75,
     height: 70,
     marginTop: 15,
     marginStart: 20,
-    backgroundColor: 'rgba(0,0,0,0)',
+    backgroundColor: colors.transparent,
   },
   countryName: {
     position: 'absolute',
@@ -36,14 +37,18 @@ const style = StyleSheet.create({
     fontSize: 20,
     color: 'white',
   },
+  flagImage: {flex: 1, resizeMode: 'contain'},
 });
 
 const countryItemRenderFlatList = (item, navigation) => {
   return (
-    <TouchableOpacity underlayColor={'white'} onPress={()=>navigation.navigate('States',{country:item.country})} >
+    <TouchableOpacity
+      onPress={() => navigation.navigate('States', {country: item.country})}>
       <View style={style.container}>
         <View style={style.countryContainer}>
-          <View style={style.countryBrand}><Image style={{flex:1, resizeMode:'contain'}} source={{uri:item.flagUrl}}/></View>
+          <View style={style.countryBrand}>
+            <Image style={style.flagImage} source={{uri: item.flagUrl}} />
+          </View>
           <Text style={style.countryName}> {item.country} </Text>
         </View>
       </View>
@@ -63,7 +68,7 @@ class HomeScreen extends Component {
   render() {
     if (this.state.loading) {
       return (
-        <View style={{flex: 1}}>
+        <View style={geralStyles.loading}>
           <ActivityIndicator />
         </View>
       );
