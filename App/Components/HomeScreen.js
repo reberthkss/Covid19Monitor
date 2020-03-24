@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+
 import {
   View,
   Text,
@@ -40,10 +41,17 @@ const style = StyleSheet.create({
 
 const countryItemRenderFlatList = (item, navigation) => {
   return (
-    <TouchableOpacity underlayColor={'white'} onPress={()=>navigation.navigate('States',{country:item.country})} >
+    <TouchableOpacity
+      underlayColor={'white'}
+      onPress={() => navigation.navigate('States', {country: item.country})}>
       <View style={style.container}>
         <View style={style.countryContainer}>
-          <View style={style.countryBrand}><Image style={{flex:1, resizeMode:'contain'}} source={{uri:item.flagUrl}}/></View>
+          <View style={style.countryBrand}>
+            <Image
+              style={{flex: 1, resizeMode: 'contain'}}
+              source={{uri: item.flagUrl}}
+            />
+          </View>
           <Text style={style.countryName}> {item.country} </Text>
         </View>
       </View>
