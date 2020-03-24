@@ -36,10 +36,10 @@ const headerOptionsStatesScreen = {
 
 const headerOptionsDetailScreen = {
   headerStyle: {backgroundColor: 'rgba(123,137,151,100)'},
-  title: 'Detail about state',
-  headerTintColor: 'white',
-  headerTitleStyle: {fontFamily: 'Arial'},
-  headerRight: () => searchIcon,
+  headerShown: 'true',
+  headerTitle: '',
+  headerTransparent: 'true',
+  headerTintColor: 'black',
 };
 
 export default class App extends Component {
