@@ -9,6 +9,7 @@ import {
   Image,
 } from 'react-native';
 import CountryProviders from '../Providers/CountryProviders';
+import ListOfStatesScreen from './ListOfStatesScreen';
 
 const style = StyleSheet.create({
   container: {
@@ -37,9 +38,9 @@ const style = StyleSheet.create({
   },
 });
 
-const countryItemRenderFlatList  = item => {
+const countryItemRenderFlatList = (item, navigation) => {
   return (
-    <TouchableOpacity underlayColor={'white'}>
+    <TouchableOpacity underlayColor={'white'} onPress={()=>navigation.navigate('States',{country:item.country})} >
       <View style={style.container}>
         <View style={style.countryContainer}>
           <View style={style.countryBrand}><Image style={{flex:1, resizeMode:'contain'}} source={{uri:item.flagUrl}}/></View>
@@ -57,7 +58,6 @@ class HomeScreen extends Component {
   componentDidMount(): void {
     CountryProviders.getCountriesList().then(countryList => {
       this.setState({loading: false, countries: countryList});
-      console.log(this.state);
     });
   }
   render() {
@@ -72,7 +72,9 @@ class HomeScreen extends Component {
       <FlatList
         style={style.container}
         data={this.state.countries}
-        renderItem={({item}) => countryItemRenderFlatList (item)}
+        renderItem={({item}) =>
+          countryItemRenderFlatList(item, this.props.navigation)
+        }
         keyExtractor={item => item.id}
       />
     );
