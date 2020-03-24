@@ -5,6 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from './Components/HomeScreen';
 import ListOfStatesScreen from './Components/ListOfStatesScreen';
+import DetailAboutStateScreen from './Components/DetailAboutStateScreen';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Stack = createStackNavigator();
@@ -33,6 +34,15 @@ const headerOptionsStatesScreen = {
   headerRight: () => searchIcon,
 };
 
+const headerOptionsDetailScreen = {
+  headerStyle: {backgroundColor: 'rgba(123,137,151,100)'},
+  title: 'Detail about state',
+  headerTintColor: 'white',
+  headerTitleAlign: 'center',
+  headerTitleStyle: {fontFamily: 'Domine'},
+  headerRight: () => searchIcon,
+};
+
 export default class App extends Component {
   render() {
     return (
@@ -47,6 +57,11 @@ export default class App extends Component {
             name={'States'}
             component={ListOfStatesScreen}
             options={headerOptionsStatesScreen}
+          />
+          <Stack.Screen
+            name={'DetailState'}
+            component={DetailAboutStateScreen}
+            options={headerOptionsDetailScreen}
           />
         </Stack.Navigator>
       </NavigationContainer>
