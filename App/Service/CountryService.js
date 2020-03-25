@@ -9,7 +9,8 @@ export default class CountryService {
       body: '',
       redirect: 'follow',
     });
-    let countriesJson = await countries.json();
+    if(!countriesRes.ok) throw Error(`Countrys not found. ${countriesRes.status}`)
+    let countriesJson = await countriesRes.json();
     return countriesJson.countries;
   };
 }
