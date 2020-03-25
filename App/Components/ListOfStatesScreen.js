@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import StateProvider from '../Providers/StateProvider';
 
-const statesRender = state => {
+const renderState = state => {
   return (
     <TouchableOpacity>
       <View>
