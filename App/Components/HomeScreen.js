@@ -63,9 +63,13 @@ class HomeScreen extends Component {
     countries: [],
   };
   componentDidMount(): void {
-    CountryProviders.getCountriesList().then(countryList => {
-      this.setState({loading: false, countries: countryList});
-    });
+    CountryProviders.getCountriesList()
+      .then(countryList => {
+        this.setState({loading: false, countries: countryList});
+      })
+      .catch(error => {
+        this.setState({loading: false, error: error.message});
+      });
   }
   render() {
     if (this.state.loading) {
