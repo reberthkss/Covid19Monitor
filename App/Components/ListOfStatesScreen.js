@@ -38,11 +38,11 @@ export default class ListOfStatesScreen extends Component {
   };
 
   componentDidMount(): void {
-    StateProvider.getListOfStates(this.props.route.params.country).then(
-      listStates => {
+    StateProvider.getListOfStates(this.props.route.params.country)
+      .then(listStates => {
         this.setState({loading: false, states: listStates});
-      },
-    );
+      })
+      .catch(error => this.setState({loading:false, error:error.message}));
   }
 
   render() {
