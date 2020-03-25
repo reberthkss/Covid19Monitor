@@ -3,7 +3,7 @@ let myHeader = new Headers();
 myHeader.append('Content-type', 'application/json');
 export default class CountryService {
   static getCountries = async () => {
-    let countries = await fetch(urlWorld, {
+    let countriesRes = await fetch(urlWorld, {
       method: 'GET',
       headers: myHeader,
       body: '',
