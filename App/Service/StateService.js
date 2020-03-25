@@ -13,8 +13,8 @@ export default class StateService {
     );
     if (!res.ok) throw Error(`Error ${res.status}`);
     let countryStats = await res.json();
-    let error = countryStats.message.indexOf('Country not found');
-    if (!error) throw Error(`${countryName} not found`);
+    let errorMessageIndex = countryStats.message.indexOf('Country not found');
+    if (errorMessageIndex != -1) throw Error(`${countryName} not found`);
     return countryStats.data.covid19Stats;
   };
 }
