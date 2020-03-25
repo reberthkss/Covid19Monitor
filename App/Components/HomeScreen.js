@@ -79,6 +79,13 @@ class HomeScreen extends Component {
         </View>
       );
     }
+    if (this.state.error) {
+      return (
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          <Text style={{fontSize: 28}}>{this.state.error}</Text>
+        </View>
+      );
+    }
     return (
       <FlatList
         style={style.container}
