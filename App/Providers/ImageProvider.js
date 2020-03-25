@@ -1,11 +1,11 @@
 import ImageService from '../Service/ImageService';
 
 export default class ImageProvider {
-  static parseFlagUrlToObjectList = async country => {
-    let flagUrl = await ImageService.getFlagUrl(country.name);
+  static parseFlagUrlToObjectList = async countryName => {
+    let flagUrl = await ImageService.getFlagUrl(countryName);
     let countryObj = {
-      id: country.name,
-      country: country.name,
+      id: countryName,
+      country: countryName,
       flagUrl: flagUrl,
     };
     return countryObj;
