@@ -42,7 +42,7 @@ export default class ListOfStatesScreen extends Component {
       .then(listStates => {
         this.setState({loading: false, states: listStates});
       })
-      .catch(error => this.setState({loading:false, error:error.message}));
+      .catch(error => this.setState({loading: false, error: error.message}));
   }
 
   render() {
@@ -56,7 +56,9 @@ export default class ListOfStatesScreen extends Component {
     if (this.state.error) {
       return (
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-          <Text style={{fontSize: 28}}> Stats of states from {this.state.error}</Text>
+          <Text style={{fontSize: 28}}>
+            Stats of states from {this.state.error}
+          </Text>
         </View>
       );
     }
