@@ -58,7 +58,7 @@ export default class ListOfStatesScreen extends Component {
         <FlatList
           style={{flex: 1}}
           data={this.state.states}
-          renderItem={({item}) => statesRender(item)}
+          renderItem={({item}) => renderState(item)}
           keyExtractor={item => item.id}
         />
       </View>
