@@ -5,11 +5,14 @@ export default class CountryProviders {
     let i;
     let countryList = [];
     let countries = await CountryService.getCountries();
-
     for (i = 0; i < countries.length; i++) {
-      let countryObj = await ImageProvider.parseFlagUrlToObjectList(
-        countries[i],
-      );
+      let countryObj = {
+        id: countries[i].name,
+        country: countries[i].name,
+        flagUrl: await ImageProvider.parseFlagUrlToObjectList(
+          countries[i].name,
+        ),
+      };
       countryList.push(countryObj);
     }
     return countryList;

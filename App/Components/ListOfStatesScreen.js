@@ -9,7 +9,8 @@ import {
 import StateProvider from '../Providers/StateProvider';
 import colors from '../styles/colors';
 import geralStyles from '../styles/general';
-const statesRender = (state, navigation) => {
+
+const renderState = (state, navigation) => {
   return (
     <TouchableOpacity
       onPress={() =>
@@ -43,11 +44,11 @@ export default class ListOfStatesScreen extends Component {
   };
 
   componentDidMount(): void {
-    StateProvider.getListOfStates(this.props.route.params.country).then(
-      listStates => {
+    StateProvider.getListOfStates(this.props.route.params.country)
+      .then(listStates => {
         this.setState({loading: false, states: listStates});
-      },
-    );
+      })
+      .catch(error => this.setState({loading: false, error: error.message}));
   }
 
   render() {
@@ -58,12 +59,19 @@ export default class ListOfStatesScreen extends Component {
         </View>
       );
     }
+    if (this.state.error) {
+      return (
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          <Text style={{fontSize: 28}}>{this.state.error}</Text>
+        </View>
+      );
+    }
     return (
       <View style={{flex: 1}}>
         <FlatList
           style={{flex: 1}}
           data={this.state.states}
-          renderItem={({item}) => statesRender(item, this.props.navigation)}
+          renderItem={({item}) => renderState(item, this.props.navigation)}
           keyExtractor={item => item.id}
         />
       </View>
