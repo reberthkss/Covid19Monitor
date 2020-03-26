@@ -1,5 +1,15 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
+
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  TouchableOpacity,
+  ActivityIndicator,
+  Image,
+} from 'react-native';
+import CountryProviders from '../Providers/CountryProviders';
 
 const style = StyleSheet.create({
   container: {
@@ -13,49 +23,76 @@ const style = StyleSheet.create({
     backgroundColor: '#5A6978',
   },
   countryBrand: {
-    width: 72,
-    height: 55,
+    width: 75,
+    height: 70,
     marginTop: 15,
     marginStart: 20,
-    backgroundColor: '#13CE66',
+    backgroundColor: 'rgba(0,0,0,0)',
   },
   countryName: {
     position: 'absolute',
-    marginTop: 25,
+    marginTop: 35,
     marginLeft: 130,
     fontSize: 20,
     color: 'white',
   },
 });
 
-const countryItemRenderFlatList = item => {
+const countryItemRenderFlatList = (item, navigation) => {
   return (
-    <TouchableOpacity underlayColor={'white'}>
+    <TouchableOpacity
+      underlayColor={'white'}
+      onPress={() => navigation.navigate('States', {country: item.country})}>
       <View style={style.container}>
         <View style={style.countryContainer}>
-          <View style={style.countryBrand} />
-          <Text style={style.countryName}> {item.name} </Text>
+          <View style={style.countryBrand}>
+            <Image
+              style={{flex: 1, resizeMode: 'contain'}}
+              source={{uri: item.flagUrl}}
+            />
+          </View>
+          <Text style={style.countryName}> {item.country} </Text>
         </View>
       </View>
     </TouchableOpacity>
   );
 };
 class HomeScreen extends Component {
+  state = {
+    loading: true,
+    countries: [],
+  };
+  componentDidMount(): void {
+    CountryProviders.getCountriesList()
+      .then(countryList => {
+        this.setState({loading: false, countries: countryList});
+      })
+      .catch(error => {
+        this.setState({loading: false, error: error.message});
+      });
+  }
   render() {
+    if (this.state.loading) {
+      return (
+        <View style={{flex: 1}}>
+          <ActivityIndicator />
+        </View>
+      );
+    }
+    if (this.state.error) {
+      return (
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          <Text style={{fontSize: 28}}>{this.state.error}</Text>
+        </View>
+      );
+    }
     return (
       <FlatList
         style={style.container}
-        data={[
-          {id: 'Brasil1', name: 'Brasil', flagUrl: 'abc'},
-          {id: 'Brasil2', name: 'Brasil', flagUrl: 'abc'},
-          {id: 'Brasil3', name: 'Brasil', flagUrl: 'abc'},
-          {id: 'Brasil4', name: 'Brasil', flagUrl: 'abc'},
-          {id: 'Brasil5', name: 'Brasil', flagUrl: 'abc'},
-          {id: 'Brasil6', name: 'Brasil', flagUrl: 'abc'},
-          {id: 'Brasil7', name: 'Brasil', flagUrl: 'abc'},
-          {id: 'Brasil8', name: 'Brasil', flagUrl: 'abc'},
-        ]}
-        renderItem={({item}) => countryItemRenderFlatList(item)}
+        data={this.state.countries}
+        renderItem={({item}) =>
+          countryItemRenderFlatList(item, this.props.navigation)
+        }
         keyExtractor={item => item.id}
       />
     );
