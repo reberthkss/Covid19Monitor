@@ -14,7 +14,7 @@ export default class StateService {
     if (!res.ok) throw Error(`Error ${res.status}`);
     let countryStats = await res.json();
     let errorMessageIndex = countryStats.message.indexOf('Country not found');
-    if (errorMessageIndex != -1) throw Error(`${countryName} not found`);
+    if (errorMessageIndex != -1) throw Error(`Stats of states from  ${countryName} not found`);
     return countryStats.data.covid19Stats;
   };
 }
