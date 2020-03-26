@@ -6,12 +6,10 @@ export default class StateProvider {
       ? (countryName = countryName)
       : (countryName = 'US');
 
-    let states = await StateService.getState(countryName).catch(error => {
-      throw error;
-    });
+    let states = await StateService.getState(countryName)
 
     return states.map((state, id) => {
-      let s = {
+      return {
         id: (id + 1).toString(),
         Country: state.country,
         StateName: state.province.length ? state.province : states[0].country,
@@ -19,7 +17,6 @@ export default class StateProvider {
         Deaths: state.deaths,
         Recovered: state.recovered,
       };
-      return s;
     });
   };
 }
