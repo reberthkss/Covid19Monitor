@@ -64,15 +64,26 @@ class HomeScreen extends Component {
     countries: [],
   };
   componentDidMount(): void {
-    CountryProviders.getCountriesList().then(countryList => {
-      this.setState({loading: false, countries: countryList});
-    });
+    CountryProviders.getCountriesList()
+      .then(countryList => {
+        this.setState({loading: false, countries: countryList});
+      })
+      .catch(error => {
+        this.setState({loading: false, error: error.message});
+      });
   }
   render() {
     if (this.state.loading) {
       return (
         <View style={{flex: 1}}>
           <ActivityIndicator />
+        </View>
+      );
+    }
+    if (this.state.error) {
+      return (
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          <Text style={{fontSize: 28}}>{this.state.error}</Text>
         </View>
       );
     }

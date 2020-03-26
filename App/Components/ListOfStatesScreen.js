@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import StateProvider from '../Providers/StateProvider';
 
-const statesRender = state => {
+const renderState = state => {
   return (
     <TouchableOpacity>
       <View>
@@ -38,11 +38,11 @@ export default class ListOfStatesScreen extends Component {
   };
 
   componentDidMount(): void {
-    StateProvider.getListOfStates(this.props.route.params.country).then(
-      listStates => {
+    StateProvider.getListOfStates(this.props.route.params.country)
+      .then(listStates => {
         this.setState({loading: false, states: listStates});
-      },
-    );
+      })
+      .catch(error => this.setState({loading: false, error: error.message}));
   }
 
   render() {
@@ -53,12 +53,19 @@ export default class ListOfStatesScreen extends Component {
         </View>
       );
     }
+    if (this.state.error) {
+      return (
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          <Text style={{fontSize: 28}}>{this.state.error}</Text>
+        </View>
+      );
+    }
     return (
       <View style={{flex: 1}}>
         <FlatList
           style={{flex: 1}}
           data={this.state.states}
-          renderItem={({item}) => statesRender(item)}
+          renderItem={({item}) => renderState(item)}
           keyExtractor={item => item.id}
         />
       </View>
