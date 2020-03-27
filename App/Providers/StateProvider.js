@@ -6,7 +6,7 @@ export default class StateProvider {
       ? (countryName = countryName)
       : (countryName = 'US');
 
-    let states = await StateService.getState(countryName)
+    let states = await StateService.getState(countryName);
 
     return states.map((state, id) => {
       return {

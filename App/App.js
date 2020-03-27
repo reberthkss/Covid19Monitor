@@ -10,57 +10,25 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Stack = createStackNavigator();
 
-const searchIcon = (
-  <TouchableOpacity>
-    <View style={{padding: 10, margin: 10}}>
-      <Icon name={'search'} style={{color: 'white'}} size={15} />
-    </View>
-  </TouchableOpacity>
-);
-
-const headerOptionsHomeScreen = {
-  headerStyle: {backgroundColor: 'rgba(123,137,151,100)'},
-  title: 'Covid-19 Monitor',
-  headerTintColor: 'white',
-  headerTitleAlign: 'center',
-  headerTitleStyle: {fontFamily: 'Domine'},
-  headerRight: () => searchIcon,
-};
-const headerOptionsStatesScreen = {
-  headerStyle: {backgroundColor: 'rgba(123,137,151,100)'},
-  title: 'States',
-  headerTintColor: 'white',
-  headerTitleStyle: {fontFamily: 'Arial'},
-  headerRight: () => searchIcon,
-};
-
-const headerOptionsDetailScreen = {
-  headerStyle: {backgroundColor: 'rgba(123,137,151,100)'},
-  headerShown: 'true',
-  headerTitle: '',
-  headerTransparent: 'true',
-  headerTintColor: 'black',
-};
-
 export default class App extends Component {
+  headerOptionsDetailScreen = {
+    headerStyle: {backgroundColor: 'rgba(123,137,151,100)'},
+    headerShown: 'true',
+    headerTitle: '',
+    headerTransparent: 'true',
+    headerTintColor: 'black',
+  };
+
   render() {
     return (
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen
-            name={'Home'}
-            component={HomeScreen}
-            options={headerOptionsHomeScreen}
-          />
-          <Stack.Screen
-            name={'States'}
-            component={ListOfStatesScreen}
-            options={headerOptionsStatesScreen}
-          />
+          <Stack.Screen name={'Home'} component={HomeScreen} />
+          <Stack.Screen name={'States'} component={ListOfStatesScreen} />
           <Stack.Screen
             name={'DetailState'}
             component={DetailAboutStateScreen}
-            options={headerOptionsDetailScreen}
+            options={this.headerOptionsDetailScreen}
           />
         </Stack.Navigator>
       </NavigationContainer>
