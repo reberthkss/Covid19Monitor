@@ -1,4 +1,3 @@
-
 const colors = {
   primary: '#5E92C0',
   secondary: '#5A6978',
