@@ -24,26 +24,17 @@ const style = StyleSheet.create({
   containerAvatarStateProfile: {
     flex: 0.3,
     position: 'relative',
-    marginTop: '-20%',
+    marginTop: -80,
     alignItems: 'center',
-  },
-  containerCardStatState: {
-    flex: 1,
-    paddingBottom: '10%',
-    marginStart: '3%',
-    marginEnd: '3%',
-    marginTop: '4%',
-    marginBottom: '5%',
-    backgroundColor: colors.subtitleProfile,
   },
   valueStatState: {
     fontSize: 20,
     color: 'white',
     fontFamily: 'Arial',
-    marginTop: '-6%',
+    marginTop: -18,
   },
   stateName: {
-    margin: '2%',
+    margin: 8,
     fontFamily: 'arial',
     fontSize: 16,
     color: 'black',
@@ -105,7 +96,7 @@ export default class DetailAboutStateScreen extends Component {
             rounded
             title={this.stateSelected.StateName[0]}
             size={100}
-            containerStyle={{marginTop: '3%'}}
+            containerStyle={{marginTop: 10}}
           />
           <Text style={style.stateName}>{this.stateSelected.StateName}</Text>
           <View style={style.containerSubTitle}>

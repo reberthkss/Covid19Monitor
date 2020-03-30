@@ -4,11 +4,11 @@ import React, {Component} from 'react';
 const style = StyleSheet.create({
   containerCardStatState: {
     flex: 1,
-    paddingBottom: '10%',
-    marginStart: '3%',
-    marginEnd: '3%',
-    marginTop: '4%',
-    marginBottom: '5%',
+    paddingBottom: 35,
+    marginStart: 10,
+    marginEnd: 10,
+    marginTop: 10,
+    marginBottom: 10,
     backgroundColor: colors.subtitleProfile,
   },
 });
@@ -19,8 +19,8 @@ export default class StatsOfStatesCard extends Component {
     let value = this.props.value ? this.props.value : '';
     return (
       <View style={style.containerCardStatState}>
-        <View style={{marginLeft: '2%', marginRight: '2%'}}>
-          <Text style={{marginTop: '5%', fontSize: 22}}>{typeStat}</Text>
+        <View style={{marginLeft: 6, marginRight: 6}}>
+          <Text style={{marginTop: 15, fontSize: 22}}>{typeStat}</Text>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <Text style={{color: colors.primary}}>{sub}</Text>
             <Text style={style.valueStatState}>{value}</Text>
