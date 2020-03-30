@@ -7,6 +7,7 @@ import HomeScreen from './Components/HomeScreen';
 import ListOfStatesScreen from './Components/ListOfStatesScreen';
 import DetailAboutStateScreen from './Components/DetailAboutStateScreen';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import colors from './styles/colors';
 
 const Stack = createStackNavigator();
 
@@ -19,7 +20,7 @@ const searchIcon = (
 );
 
 const headerOptionsHomeScreen = {
-  headerStyle: {backgroundColor: 'rgba(123,137,151,100)'},
+  headerStyle: {backgroundColor: colors.header},
   title: 'Covid-19 Monitor',
   headerTintColor: 'white',
   headerTitleAlign: 'center',
@@ -27,7 +28,7 @@ const headerOptionsHomeScreen = {
   headerRight: () => searchIcon,
 };
 const headerOptionsStatesScreen = {
-  headerStyle: {backgroundColor: 'rgba(123,137,151,100)'},
+  headerStyle: {backgroundColor: colors.header},
   title: 'States',
   headerTintColor: 'white',
   headerTitleStyle: {fontFamily: 'Arial'},
@@ -35,7 +36,7 @@ const headerOptionsStatesScreen = {
 };
 
 const headerOptionsDetailScreen = {
-  headerStyle: {backgroundColor: 'rgba(123,137,151,100)'},
+  headerStyle: {backgroundColor: colors.header},
   headerShown: 'true',
   headerTitle: '',
   headerTransparent: 'true',
