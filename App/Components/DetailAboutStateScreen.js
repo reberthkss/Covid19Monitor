@@ -31,7 +31,7 @@ const style = StyleSheet.create({
     fontSize: 20,
     color: 'white',
     fontFamily: 'Arial',
-    marginTop: -18,
+    marginTop: -16,
   },
   stateName: {
     margin: 8,
@@ -96,7 +96,7 @@ export default class DetailAboutStateScreen extends Component {
             rounded
             title={this.stateSelected.StateName[0]}
             size={100}
-            containerStyle={{marginTop: 10}}
+            containerStyle={{marginTop: 12}}
           />
           <Text style={style.stateName}>{this.stateSelected.StateName}</Text>
           <View style={style.containerSubTitle}>
