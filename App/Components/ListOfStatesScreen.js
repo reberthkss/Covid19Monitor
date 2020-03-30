@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import StateProvider from '../Providers/StateProvider';
 import colors from '../styles/colors';
-import geralStyles from '../styles/general';
+import generalStyles from '../styles/general';
 
 const renderState = (state, navigation) => {
   return (
@@ -54,7 +54,7 @@ export default class ListOfStatesScreen extends Component {
   render() {
     if (this.state.loading) {
       return (
-        <View style={geralStyles.loading}>
+        <View style={generalStyles.loading}>
           <ActivityIndicator />
         </View>
       );

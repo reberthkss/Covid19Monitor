@@ -8,7 +8,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import {Avatar} from 'react-native-elements';
-import geralStyles from '../styles/general';
+import generalStyles from '../styles/general';
 import colors from '../styles/colors';
 import StatsOfStatesCard from './StatsOfStatesCard';
 
@@ -26,12 +26,6 @@ const style = StyleSheet.create({
     position: 'relative',
     marginTop: -80,
     alignItems: 'center',
-  },
-  valueStatState: {
-    fontSize: 20,
-    color: 'white',
-    fontFamily: 'Arial',
-    marginTop: -16,
   },
   stateName: {
     margin: 8,
@@ -83,7 +77,7 @@ export default class DetailAboutStateScreen extends Component {
   render() {
     if (this.state.loading) {
       return (
-        <View style={geralStyles.loading}>
+        <View style={generalStyles.loading}>
           <ActivityIndicator />
         </View>
       );

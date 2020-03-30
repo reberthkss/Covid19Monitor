@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import CountryProviders from '../Providers/CountryProviders';
 import colors from '../styles/colors';
-import geralStyles from '../styles/general';
+import generalStyles from '../styles/general';
 
 const style = StyleSheet.create({
   container: {
@@ -73,7 +73,7 @@ class HomeScreen extends Component {
   render() {
     if (this.state.loading) {
       return (
-        <View style={geralStyles.loading}>
+        <View style={generalStyles.loading}>
           <ActivityIndicator />
         </View>
       );

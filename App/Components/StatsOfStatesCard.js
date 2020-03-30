@@ -11,12 +11,18 @@ const style = StyleSheet.create({
     marginBottom: 12,
     backgroundColor: colors.subtitleProfile,
   },
+  valueStatState: {
+    fontSize: 20,
+    color: 'white',
+    fontFamily: 'Arial',
+    marginTop: -16,
+  },
 });
 export default class StatsOfStatesCard extends Component {
   render() {
-    let typeStat = this.props.typeStat ? this.props.typeStat : '';
-    let sub = this.props.sub ? this.props.sub : '';
-    let value = this.props.value ? this.props.value : '';
+    let typeStat = this.props.typeStat ? this.props.typeStat : '0';
+    let sub = this.props.sub ? this.props.sub : '0';
+    let value = this.props.value ? this.props.value : 0;
     return (
       <View style={style.containerCardStatState}>
         <View style={{marginLeft: 8, marginRight: 8}}>
