@@ -8,10 +8,11 @@ import {
 } from 'react-native';
 import StateProvider from '../Providers/StateProvider';
 import colors from '../styles/colors';
-import geralStyles from '../styles/general';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import SearchInput, {createFilter} from 'react-native-search-filter';
 const KEYS_TO_FILTER = ['StateName'];
+import generalStyles from '../styles/general';
+
 const renderState = (state, navigation) => {
   return (
     <TouchableOpacity
@@ -134,7 +135,7 @@ export default class ListOfStatesScreen extends Component {
     );
     if (this.state.loading) {
       return (
-        <View style={geralStyles.loading}>
+        <View style={generalStyles.loading}>
           <ActivityIndicator />
         </View>
       );

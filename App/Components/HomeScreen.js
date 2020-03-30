@@ -11,9 +11,10 @@ import {
 } from 'react-native';
 import CountryProviders from '../Providers/CountryProviders';
 import colors from '../styles/colors';
-import geralStyles from '../styles/general';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import SearchInput, {createFilter} from 'react-native-search-filter';
+import generalStyles from '../styles/general';
+
 const style = StyleSheet.create({
   container: {
     flex: 1,
@@ -164,7 +165,7 @@ class HomeScreen extends Component {
     );
     if (this.state.loading) {
       return (
-        <View style={geralStyles.loading}>
+        <View style={generalStyles.loading}>
           <ActivityIndicator />
         </View>
       );
