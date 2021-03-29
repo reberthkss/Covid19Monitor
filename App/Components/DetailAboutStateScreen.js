@@ -50,7 +50,7 @@ export default class DetailAboutStateScreen extends Component {
     stateStats: [],
   };
   stateSelected = this.props.route.params.selectedState;
-  componentDidMount(): void {
+  componentDidMount() {
     let stateStats = [];
     let statConfirmed = {
       typeStat: 'Confirmed',

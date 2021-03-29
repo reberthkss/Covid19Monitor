@@ -43,7 +43,7 @@ export default class ListOfStatesScreen extends Component {
     states: [],
   };
 
-  componentDidMount(): void {
+  componentDidMount() {
     StateProvider.getListOfStates(this.props.route.params.country)
       .then(listStates => {
         this.setState({loading: false, states: listStates});

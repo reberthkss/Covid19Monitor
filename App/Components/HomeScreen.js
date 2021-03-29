@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-
 import {
   View,
   Text,
@@ -61,7 +60,7 @@ class HomeScreen extends Component {
     loading: true,
     countries: [],
   };
-  componentDidMount(): void {
+  componentDidMount() {
     CountryProviders.getCountriesList()
       .then(countryList => {
         this.setState({loading: false, countries: countryList});
@@ -74,7 +73,7 @@ class HomeScreen extends Component {
     if (this.state.loading) {
       return (
         <View style={generalStyles.loading}>
-          <ActivityIndicator />
+          <ActivityIndicator size={"large"} color={"blue"}/>
         </View>
       );
     }
